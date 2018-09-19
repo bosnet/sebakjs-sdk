@@ -1,0 +1,20 @@
+{
+  "name": "sebakjs-util",
+  "version": "0.1.0",
+  "description": "utility functions for SEBAK",
+  "main": "index.js",
+	"repository": {
+    "type": "git",
+    "url": "git+https://github.com/bosnet/sebakjs-util.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "BOScoin",
+    "sebak",
+    "blockchain"
+  ],
+  "author": "BlockchainOS",
+  "license": "MPL-2.0"
+}
