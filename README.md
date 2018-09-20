@@ -1,5 +1,6 @@
 SEBAK.js util
 --------------------
+[![CircleCI](https://circleci.com/gh/bosnet/sebakjs-util.svg?style=svg)](https://circleci.com/gh/bosnet/sebakjs-util)
 
 * `hash` - make a hash from RLP data, e.g. Transaction
   * Arguments :
