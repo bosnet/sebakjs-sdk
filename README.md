@@ -1,5 +1,7 @@
 SEBAK.js util
 --------------------
+
+[![NPM Version](https://img.shields.io/npm/v/sebakjs-util.svg)](https://npmjs.org/package/sebakjs-util)
 [![CircleCI](https://circleci.com/gh/bosnet/sebakjs-util.svg?style=svg)](https://circleci.com/gh/bosnet/sebakjs-util)
 
 * `hash` - make a hash from RLP data, e.g. Transaction
