@@ -31,7 +31,6 @@
     "mocha": "^5.2.0"
   },
   "dependencies": {
-    "argon2": "^0.19.3",
     "bs58": "^4.0.1",
     "rlp": "^2.1.0",
     "stellar-base": "^0.9.0"

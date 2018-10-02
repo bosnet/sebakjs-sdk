@@ -10,11 +10,11 @@ describe('hash', () => {
     //   "H": {
     //     "version": "",
     //       "created": "2018-01-01T00:00:00.000000000Z",
-    //       "hash": "D2EMY1T1oLFFELMa7BySmtB7FbSF7YPe1ae8reXDsEPQ",
-    //       "signature": "5zdcFUaYAXZ7ZNyKWzfw2b9GENS65mFtgXC4KVcXhJWAARGAHLa1faewwdCEMuQVgaHQojd6r86svXP8xn4zKvCT"
+    //       "hash": "7mRUj4cnUPaTrpByojPsT3xoRRdwG6Q9z2eLyCMapQm6",
+    //       "signature": "4ty1Pv7Phc3CEeGLCP8mjZfEC259VR1MBgyVHzQXTcWjuSiwxVQ2AQKxy2HjGTCDrmdE29z8ZNZ6GxuDyEay2p9M"
     //   },
     //     "B": {
-    //     "source": "GDIRF4UWPACXPPI4GW7CMTACTCNDIKJEHZK44RITZB4TD3YUM6CCVNGJ",
+    //       "source": "GDIRF4UWPACXPPI4GW7CMTACTCNDIKJEHZK44RITZB4TD3YUM6CCVNGJ",
     //       "fee": "10000",
     //       "sequenceID": 0,
     //       "operations": [
@@ -24,7 +24,8 @@ describe('hash', () => {
     //         },
     //         "B": {
     //           "target": "GDTEPFWEITKFHSUO44NQABY2XHRBBH2UBVGJ2ZJPDREIOL2F6RAEBJE4",
-    //           "amount": "10000000000"
+    //           "amount": "10000000000",
+    //           "linked": ""
     //         }
     //       }
     //     ]
@@ -37,11 +38,11 @@ describe('hash', () => {
       0,
       [[
         ['create-account'],
-        ['GDTEPFWEITKFHSUO44NQABY2XHRBBH2UBVGJ2ZJPDREIOL2F6RAEBJE4', 10000000000],
+        ['GDTEPFWEITKFHSUO44NQABY2XHRBBH2UBVGJ2ZJPDREIOL2F6RAEBJE4', 10000000000, ""],
       ]],
     ];
 
-    const result = await hash(tx);
-    expect(result).to.equal('D2EMY1T1oLFFELMa7BySmtB7FbSF7YPe1ae8reXDsEPQ');
+    const result = hash(tx);
+    expect(result).to.equal('7mRUj4cnUPaTrpByojPsT3xoRRdwG6Q9z2eLyCMapQm6');
   });
 });
