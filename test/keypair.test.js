@@ -1,8 +1,22 @@
 const { expect } = require('chai');
 
-const { getPublicAddress, sign, verify } = require('../lib/keypair');
+const {
+  generate,
+  getPublicAddress,
+  sign,
+  verify,
+} = require('../lib/keypair');
 
 describe('Keypair', () => {
+  describe('generate()', () => {
+    it('should create new keypair', async () => {
+      const keypair = generate();
+
+      expect(keypair).to.have.property('seed').to.match(/^S/);
+      expect(keypair).to.have.property('address').to.match(/^G/);
+    });
+  });
+
   describe('getPublicAddress()', () => {
     it('should return public address corresponding to secret seed', async () => {
       const secret = 'SBHLF2WAI2QBOR4BDEGJCQWUHW4RT7QUV6SI5I6IZXBWSTLAROLW4DYN';

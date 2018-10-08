@@ -8,6 +8,7 @@ SEBAK.js util
   * Arguments :
     * RLP data(`array`)
   * Return `Promise`
+* `generate` - return a new keypair
 * `getPublicAddress` - return public address from secret seed
   * Arguments :
     * secret seed(`String`)(e.g. `SBHLF2WAI2QBOR4BDEGJCQWUHW4RT7QUV6SI5I6IZXBWSTLAROLW4DYN`)

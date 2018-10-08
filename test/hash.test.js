@@ -38,7 +38,7 @@ describe('hash', () => {
       0,
       [[
         ['create-account'],
-        ['GDTEPFWEITKFHSUO44NQABY2XHRBBH2UBVGJ2ZJPDREIOL2F6RAEBJE4', 10000000000, ""],
+        ['GDTEPFWEITKFHSUO44NQABY2XHRBBH2UBVGJ2ZJPDREIOL2F6RAEBJE4', 10000000000, ''],
       ]],
     ];
 
