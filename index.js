@@ -1,15 +1,19 @@
-const hash = require('./lib/hash');
 const {
-  generate,
-  getPublicAddress,
-  sign,
-  verify,
-} = require('./lib/keypair');
+    keyPairGenerate,
+    getPublicAddress,
+    makeHash,
+    makeRLPEncoderData,
+    makeSignature,
+    makeTransaction,
+    signatureVerify,
+} = require('./lib/transaction');
 
 module.exports = {
-  hash,
-  generate,
-  getPublicAddress,
-  sign,
-  verify,
+    keyPairGenerate,
+    getPublicAddress,
+    makeHash,
+    makeRLPEncoderData,
+    makeSignature,
+    makeTransaction,
+    signatureVerify,
 };

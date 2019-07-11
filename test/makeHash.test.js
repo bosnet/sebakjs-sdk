@@ -1,8 +1,10 @@
 const { expect } = require('chai');
 
-const hash = require('../lib/hash');
+process.env['NETWORK_ID'] = "sebak-test-network";
 
-describe('hash', () => {
+const sebakTransaction = require('../lib/transaction');
+
+describe('Hash', () => {
   it('should make a hash from transaction RLP data', async () => {
     // transaction example
     // {
@@ -32,17 +34,14 @@ describe('hash', () => {
     //   }
     // }
 
-    const tx = [
-      'GDIRF4UWPACXPPI4GW7CMTACTCNDIKJEHZK44RITZB4TD3YUM6CCVNGJ',
-      10000,
-      0,
-      [[
-        ['create-account'],
-        ['GDTEPFWEITKFHSUO44NQABY2XHRBBH2UBVGJ2ZJPDREIOL2F6RAEBJE4', 10000000000, ''],
-      ]],
-    ];
-
-    const result = hash(tx);
-    expect(result).to.equal('7mRUj4cnUPaTrpByojPsT3xoRRdwG6Q9z2eLyCMapQm6');
+    var tx = new sebakTransaction();
+    tx.addOperation('GDTEPFWEITKFHSUO44NQABY2XHRBBH2UBVGJ2ZJPDREIOL2F6RAEBJE4', 1000, 'create-account');
+    tx.sequenceId = 0;
+    tx.sign('SBECGI3FSCYHNQIMANNCWQSVA6S5C6L4BXFKAPMBAMI5V47NWXNE37MN');
+    const result1 = tx.hash;
+    const result2 = tx.signature;
+    console.log(tx.tx);
+    expect(result1).to.equal('AAu1frX9fYBpbDqVPmq3VLfL2YxSD1ZEvoSDAZag6ig6');
+    expect(result2).to.equal('4uhLAvEj131UxyQ9Jzyc92gj5GhdNBeSKGmkG4vf3GA3oETjggWjgCGmbYzNPHF6FKbu6h3KyxD4ed5LRyt7rWEM');
   });
 });
