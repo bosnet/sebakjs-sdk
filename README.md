@@ -59,7 +59,8 @@ const SebakSDK = require('sebak-sdk');
 const seed = 'SBGS23GTH2R6RBNHZIW4PAA5CKH4MKEWNC63HB42KBQMCEHPUGJ5LAZP';
 
 // In this example, target address is generated randomly.
-const target = SebakSDK.sebakUtil.keyPairGenerate().address; 
+const target = SebakSDK.sebakUtil.keyPairGenerate().address;
+const amount = 10;
 const apiUrl = 'https://testnet-sebak.blockchainos.org';
 const networkId = 'sebak-test-network';
 const transactionPath = '/api/v1/transactions';
@@ -77,7 +78,7 @@ fetch(apiAccountUrl + SebakSDK.sebakUtil.getPublicAddress(seed))
 })
 .then(function(json) {
     tx = new SebakSDK.transaction();
-    tx.addOperation(target, 1, 'create-account');
+    tx.addOperation(target, amount, 'create-account');
     tx.setSequenceId(Number(json.sequence_id));
     tx.sign(seed, networkId);
 
