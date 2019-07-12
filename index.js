@@ -1,19 +1,7 @@
-const {
-    keyPairGenerate,
-    getPublicAddress,
-    makeHash,
-    makeRLPEncoderData,
-    makeSignature,
-    makeTransaction,
-    signatureVerify,
-} = require('./lib/transaction');
+const transaction = require('./lib/transaction');
+const sebakUtil = require('./lib/util');
 
 module.exports = {
-    keyPairGenerate,
-    getPublicAddress,
-    makeHash,
-    makeRLPEncoderData,
-    makeSignature,
-    makeTransaction,
-    signatureVerify,
+  transaction,
+  sebakUtil,
 };
