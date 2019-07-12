@@ -1,15 +1,7 @@
-const hash = require('./lib/hash');
-const {
-  generate,
-  getPublicAddress,
-  sign,
-  verify,
-} = require('./lib/keypair');
+const transaction = require('./lib/transaction');
+const sebakUtil = require('./lib/util');
 
 module.exports = {
-  hash,
-  generate,
-  getPublicAddress,
-  sign,
-  verify,
+  transaction,
+  sebakUtil,
 };

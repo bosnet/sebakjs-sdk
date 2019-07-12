@@ -1,16 +1,11 @@
 const { expect } = require('chai');
 
-const {
-  generate,
-  getPublicAddress,
-  sign,
-  verify,
-} = require('../lib/keypair');
+const sebakUtil = require('../lib/util');
 
 describe('Keypair', () => {
   describe('generate()', () => {
     it('should create new keypair', async () => {
-      const keypair = generate();
+      const keypair = sebakUtil.keyPairGenerate();
 
       expect(keypair).to.have.property('seed').to.match(/^S/);
       expect(keypair).to.have.property('address').to.match(/^G/);
@@ -20,21 +15,9 @@ describe('Keypair', () => {
   describe('getPublicAddress()', () => {
     it('should return public address corresponding to secret seed', async () => {
       const secret = 'SBHLF2WAI2QBOR4BDEGJCQWUHW4RT7QUV6SI5I6IZXBWSTLAROLW4DYN';
-      const publicAddress = getPublicAddress(secret);
+      const publicAddress = sebakUtil.getPublicAddress(secret);
 
       expect(publicAddress).to.equal('GA3U37OXOIE4Y6BYZQ67MWY67EFMCFJU7KCLJONKWJKOWCISK4ZVOPHB');
-    });
-  });
-
-  describe('sign()', () => {
-    it('should make signature from networkId and data', async () => {
-      const secret = 'SBNHSQVQYZM24B6TSPRBD6ITOIEZHILNE24AMPZYO5UZH3QUTSVRJNDH';
-      const data = 'FJanX4D2WgchSfTFs94ykufp53nH1BeNFXLm8ciUrDMQ';
-      const networkId = 'this-is-test-sebak-network';
-
-      const signature = sign(data, networkId, secret);
-
-      expect(signature).to.equal('2b1qGPhUEVaFQC4BCQVVwiJo3FhUsgzXrZRWSJmuLV82pLdULiGuqTFtNsD276vAwnhddYMrW3mKSDEQiui5GhCo');
     });
   });
 
@@ -45,7 +28,7 @@ describe('Keypair', () => {
       const networkId = 'this-is-test-sebak-network';
       const data = 'FJanX4D2WgchSfTFs94ykufp53nH1BeNFXLm8ciUrDMQ';
 
-      const result = verify(data, networkId, signature, publicAddress);
+      const result = sebakUtil.signatureVerify(data, networkId, signature, publicAddress);
 
       expect(result).to.be.true;
     });

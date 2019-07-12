@@ -1,27 +1,17 @@
 {
-  "name": "sebakjs-util",
-  "version": "0.1.1",
-  "description": "utility functions for SEBAK",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bosnet/sebakjs-util.git"
+  "name": "sebak-sdk",
+  "description": "Sebak SDK for JavaScript",
+  "version": "1.0.0",
+  "author": "BlockchainOs",
+  "homepage": "https://github.com/bosnet/sebakjs-util",
+  "dependencies": {
+    "bs58": "^4.0.1",
+    "crypto": "^1.0.1",
+    "isomorphic-fetch": "^2.2.1",
+    "rlp": "^2.2.3",
+    "sebakjs-util": "^0.1.1",
+    "stellar-sdk": "^1.0.5"
   },
-  "bugs": {
-    "url": "https://github.com/bosnet/sebakjs-util/issues"
-  },
-  "homepage": "https://github.com/bosnet/sebakjs-util#readme",
-  "scripts": {
-    "test": "mocha --exit --recursive -t 20000 $(find . -name '*.test.js' -not -path './node_modules/*')",
-    "lint": "eslint ."
-  },
-  "keywords": [
-    "BOScoin",
-    "sebak",
-    "blockchain"
-  ],
-  "author": "BlockchainOS",
-  "license": "MPL-2.0",
   "devDependencies": {
     "chai": "^4.1.2",
     "eslint": "^5.6.0",
@@ -30,9 +20,14 @@
     "eslint-plugin-mocha": "^5.2.0",
     "mocha": "^5.2.0"
   },
-  "dependencies": {
-    "bs58": "^4.0.1",
-    "rlp": "^2.1.0",
-    "stellar-base": "^0.9.0"
-  }
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha --exit --recursive -t 20000 $(find . -name '*.test.js' -not -path './node_modules/*')",
+    "lint": "eslint ."
+  },
+  "license": "MPL-2.0"
 }
