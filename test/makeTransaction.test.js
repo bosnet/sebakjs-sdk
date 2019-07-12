@@ -1,17 +1,15 @@
 const { expect } = require('chai');
-
-process.env['API_URL'] = "https://testnet-sebak.blockchainos.org:443";
-process.env['NETWORK_ID'] = "sebak-test-network";
-
 const fetch = require('isomorphic-fetch');
-const sebakTransaction = require('../lib/transaction');
+
+const config = require('../lib/config');
+const Transaction = require('../lib/transaction');
 const sebakUtil = require('../lib/util');
 
-const url = process.env.API_URL;
+const url = config.TESTNET_ADDR;
 const transactionPath = '/api/v1/transactions';
 const accountPath = '/api/v1/accounts/';
-const api_transaction_url = url + transactionPath;
-const api_account_url = url + accountPath;
+const apiTransactionUrl = url + transactionPath;
+const apiAccountUrl = url + accountPath;
 
 describe('Sending transaction \n', () => {
     it('should get a success response from testnet', async () => {
@@ -36,33 +34,32 @@ describe('Sending transaction \n', () => {
         //         },
         //         "B": {
         //           "target": "GDTEPFWEITKFHSUO44NQABY2XHRBBH2UBVGJ2ZJPDREIOL2F6RAEBJE4",
-        //           "amount": "10000000000",
+        //           "amount": "10000000",
         //           "linked": ""
         //         }
         //       }
         //     ]
         //   }
         // }
-        // 
-        
-        const seed = 'SBECGI3FSCYHNQIMANNCWQSVA6S5C6L4BXFKAPMBAMI5V47NWXNE37MN';
+        //
+
+        const seed = 'SBGS23GTH2R6RBNHZIW4PAA5CKH4MKEWNC63HB42KBQMCEHPUGJ5LAZP';
         const target = sebakUtil.keyPairGenerate().address;
         // const target = 'GDTEPFWEITKFHSUO44NQABY2XHRBBH2UBVGJ2ZJPDREIOL2F6RAEBJE4';
-        
-        var tx = new sebakTransaction();
+
+        tx = new Transaction();
         tx.addOperation(target, 1, 'create-account');
 
-        await fetch(api_account_url + sebakUtil.getPublicAddress(seed))
+        await fetch(apiAccountUrl + sebakUtil.getPublicAddress(seed))
         .then(res => res.json())
-        .then(function(data) {
-            tx.sequenceId = (Number(data.sequence_id));
-        });
+        .then(data => tx.setSequenceId(Number(data.sequence_id)))
+        .catch(err => console.log(err));
 
-        tx.sign(seed);
-        
-        await fetch(api_transaction_url, 
+        tx.sign(seed, config.TESTNET_NETWORK_ID);
+
+        await fetch(apiTransactionUrl,
         {
-            method: "POST",
+            method: 'POST',
             timeout: 3000,
             headers: {
                 Accept: 'application/json',
@@ -70,9 +67,7 @@ describe('Sending transaction \n', () => {
             },
             body: JSON.stringify(tx.tx),
         }).then(res => res.json())
-        .then(function(json) {
-            console.log(json);
-            expect(json.status).to.be.equal('submitted');
-        });
+        .then(json => expect(json.status).to.be.equal('submitted'))
+        .catch(err => console.log(err));
     });
 });
